@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
 
     System.Collections.IEnumerator HitLogic()
     {
-        //player.GetComponent<Health>().TakeDamage(enemyDamage);
+        playerTransform.gameObject.GetComponent<PlayerHealth>().TakeDamage(enemyDamage);
         Debug.Log("Golpe realizado por el enemigo");
         
         // Tiempo de espera hasta permitir que el enemigo ataque de nuevo
