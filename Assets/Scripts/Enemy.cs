@@ -46,6 +46,11 @@ public class Enemy : MonoBehaviour
         {
             Attack();
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(25);
+        }
     }
 
     void Attack()
@@ -72,5 +77,24 @@ public class Enemy : MonoBehaviour
     void ChasePlayer()
     {
         agent.SetDestination(player.position);
-    }    
+    }
+
+    void TakeDamage(float damage)
+    {
+        if (enemyHealth > damage)
+        {
+            enemyHealth = enemyHealth - damage;
+            Debug.Log("Vida del enemigo: " + enemyHealth);
+        }
+        else
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+        Debug.Log("El enemigo ha muerto");
+    }
 }
