@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,8 +33,9 @@ public class PlayerMovementManagerFirstPerson : MonoBehaviour
     [Header("Crouching")]
     [SerializeField] bool isCrouchingEnabled = true;
     [SerializeField] float playerHeadDistance = 2f;
-    public float crouchYScale = 0.5f;
     [SerializeField] float crouchYScaleLerpSpeed = 7f;
+    public float crouchYScale = 0.5f;
+    
     private float startYScale;
     private bool isHeadStuck = false;
 
@@ -118,22 +120,25 @@ public class PlayerMovementManagerFirstPerson : MonoBehaviour
 
     private void GetPlayerInput()
     {
+        if (currentMovementState != MovementState.sliding)
+        {
+            horizontalInput = inputSystemActions.Player.Move.ReadValue<Vector2>().x;
+            verticalInput = inputSystemActions.Player.Move.ReadValue<Vector2>().y;
 
-        horizontalInput = inputSystemActions.Player.Move.ReadValue<Vector2>().x;
-        verticalInput = inputSystemActions.Player.Move.ReadValue<Vector2>().y;
+            if (horizontalInput != 0 || verticalInput != 0) isPressingMoveButton = true;
+            else isPressingMoveButton = false;
 
-        if (horizontalInput != 0 || verticalInput != 0) isPressingMoveButton = true;
-        else isPressingMoveButton = false;
+            isPressingJumpButton = inputSystemActions.Player.Jump.ReadValue<float>() != 0;
 
-        isPressingJumpButton = inputSystemActions.Player.Jump.ReadValue<float>() != 0;
-
-        isPresingRunningButton = inputSystemActions.Player.Sprint.ReadValue<float>() != 0;
+            isPresingRunningButton = inputSystemActions.Player.Sprint.ReadValue<float>() != 0;
+        }
+        
         isPresingCrouchingButton = inputSystemActions.Player.Crouch.ReadValue<float>() != 0;
     }
 
     private void ManageCurrentSpeedState()
     {
-        if (currentMovementState == MovementState.crouching)
+        if (currentMovementState == MovementState.crouching || currentMovementState == MovementState.sliding)
         {
             isHeadStuck = Physics.Raycast(transform.position + positionOffsetForRaycasts, transform.up, playerHeadDistance, groundLayerMask);
             if (isHeadStuck) return;
@@ -143,19 +148,17 @@ public class PlayerMovementManagerFirstPerson : MonoBehaviour
         if (isPresingCrouchingButton && isCrouchingEnabled)
         {
             currentTargetMovementSpeed = crouchingSpeed;
-
             currentMovementState = MovementState.crouching;
+
         }
         else if(isPresingRunningButton && isSprintingEnabled)
         {
             currentTargetMovementSpeed = runningSpeed;
-
             currentMovementState = MovementState.running;
         }
         else if(isPressingMoveButton)
         {
             currentTargetMovementSpeed = walkingSpeed;
-
             currentMovementState = MovementState.walking;
         }
         else
@@ -332,4 +335,5 @@ public enum MovementState
     walking,
     crouching,
     running,
+    sliding
 }
