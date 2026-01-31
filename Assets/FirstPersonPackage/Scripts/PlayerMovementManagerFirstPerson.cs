@@ -92,7 +92,7 @@ public class PlayerMovementManagerFirstPerson : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerConstantForce = GetComponent<ConstantForce>();
 
-        currentTargetMovementSpeed = walkingSpeed;
+        ChangeTargetMovementSpeed(walkingSpeed);
 
         startYScale = this.transform.localScale.y;
     }
@@ -147,23 +147,23 @@ public class PlayerMovementManagerFirstPerson : MonoBehaviour
 
         if (isPresingCrouchingButton && isCrouchingEnabled)
         {
-            currentTargetMovementSpeed = crouchingSpeed;
+            ChangeTargetMovementSpeed(crouchingSpeed);
             currentMovementState = MovementState.crouching;
 
         }
         else if(isPresingRunningButton && isSprintingEnabled)
         {
-            currentTargetMovementSpeed = runningSpeed;
+            ChangeTargetMovementSpeed(runningSpeed);
             currentMovementState = MovementState.running;
         }
         else if(isPressingMoveButton)
         {
-            currentTargetMovementSpeed = walkingSpeed;
+            ChangeTargetMovementSpeed(walkingSpeed);
             currentMovementState = MovementState.walking;
         }
         else
         {
-            currentTargetMovementSpeed = walkingSpeed;
+            ChangeTargetMovementSpeed(walkingSpeed);
             currentMovementState = MovementState.idle;
         }
     }
@@ -256,7 +256,7 @@ public class PlayerMovementManagerFirstPerson : MonoBehaviour
             rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
 
             //Jump
-            rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * (jumpForce * UpgradeableStatsSingleton.Instance.jumpForce), ForceMode.Impulse);
         }
     }
 
@@ -327,6 +327,13 @@ public class PlayerMovementManagerFirstPerson : MonoBehaviour
         if (cameraToIgnore != runningCinemachineCamera) runningCinemachineCamera.SetActive(false);
         if(crouchingCinemachineCamera != null && cameraToIgnore != crouchingCinemachineCamera) crouchingCinemachineCamera.SetActive(false);
     }
+
+    private void ChangeTargetMovementSpeed(float newSpeed)
+    {
+        currentTargetMovementSpeed = newSpeed * UpgradeableStatsSingleton.Instance.speed;
+    }
+    
+    
 }
 
 public enum MovementState

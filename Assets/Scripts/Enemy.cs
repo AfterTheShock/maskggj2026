@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] Transform playerTransform;
 
-    [Header("Configuración")]
+    [Header("Configuraciï¿½n")]
     public float enemyHealth = 100f;
     public float enemyDamage = 10f;
     public float attackCooldown = 2.0f;
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
         agent.speed = enemySpeed;
         agent.acceleration = enemyAcceleration;
-        agent.angularSpeed = enemyAngularSpeed; // Velocidad de rotación
+        agent.angularSpeed = enemyAngularSpeed; // Velocidad de rotaciï¿½n
         agent.stoppingDistance = attackRange - 0.2f; // Se detiene antes del rango
         playerTransform = GameObject.Find("Player").transform;
     }
@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        // Mide la distancia entre el enemigo (transform.position) y la posición del jugador
+        // Mide la distancia entre el enemigo (transform.position) y la posiciï¿½n del jugador
         float distance = Vector3.Distance(transform.position, playerTransform.position);
 
         if(distance <= attackRange && Time.time >= lastAttackTime + attackCooldown && !enemyIsAtacking)
@@ -80,9 +80,10 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        if (enemyHealth > damage)
+        float modifiedDamage = damage * UpgradeableStatsSingleton.Instance.damage;
+        if (enemyHealth > modifiedDamage)
         {
-            enemyHealth = enemyHealth - damage;
+            enemyHealth = enemyHealth - modifiedDamage;
             Debug.Log("Vida del enemigo: " + enemyHealth);
         }
         else
