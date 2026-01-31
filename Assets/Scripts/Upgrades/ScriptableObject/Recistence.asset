@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7c27ad09ca192443b1f66d000652d89, type: 3}
-  m_Name: PlayerDamage
+  m_Name: Recistence
   m_EditorClassIdentifier: 
-  upgradeDescription: "Da\xF1o del Arma +15%"
+  upgradeDescription: "Resistencia al Da\xF1o +15%"
   upgradeImage: {fileID: 0}
-  damage: 0.15
+  damage: 0
   fireRate: 0
   knockback: 0
   speed: 0
   jumpForce: 0
-  damageResistance: 0
+  damageResistance: 0.15
   lifeRegeneration: 0
   enemySlowness: 0
   enemyDamageReduction: 0

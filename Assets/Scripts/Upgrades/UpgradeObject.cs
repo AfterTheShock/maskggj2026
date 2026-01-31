@@ -5,6 +5,10 @@ public class UpgradeObject : ScriptableObject
 {
     [TextArea] public string upgradeDescription;
 
+    public Sprite upgradeImageFull;
+    public Sprite[] upgradeImageFragments = new Sprite[0]; 
+
+
     [Header("Mascara del arma")]
     public float damage = 0f;
     public float fireRate = 0f;
