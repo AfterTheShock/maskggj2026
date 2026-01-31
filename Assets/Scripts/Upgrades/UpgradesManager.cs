@@ -17,6 +17,8 @@ public class UpgradesManager : MonoBehaviour
     [SerializeField] int maxMaskFragment = 3;
     [SerializeField] int curentMaskFragment = 0;
 
+    [SerializeField] bool forceUpgradeScreenButton = false;
+
     #region SingletonPattern
     private static UpgradesManager _instance;
 
@@ -28,6 +30,15 @@ public class UpgradesManager : MonoBehaviour
         _instance = this;
     }
     #endregion
+
+    private void Update()
+    {
+        if (forceUpgradeScreenButton) 
+        {
+            forceUpgradeScreenButton = false;
+            ShowUpgradeScreen();
+        } 
+    }
 
     public void ShowUpgradeScreen()
     {
@@ -42,19 +53,19 @@ public class UpgradesManager : MonoBehaviour
         currentCard1 = possibleUpgrades[Random.Range(0, possibleUpgrades.Length)];
         upgradeButton1.thisUpgrade = currentCard1;
         upgradeButton1.upgradeDescription = currentCard1.upgradeDescription;
-        upgradeButton1.upgradeSprite = currentCard1.upgradeImageFragments[curentMaskFragment];
+        upgradeButton1.upgradeSprite = currentCard1.upgradeImageFull;
         upgradeButton1.DrawUpgradeToChoose();
 
         currentCard2 = possibleUpgrades[Random.Range(0, possibleUpgrades.Length)];
         upgradeButton2.thisUpgrade = currentCard2;
         upgradeButton2.upgradeDescription = currentCard2.upgradeDescription;
-        upgradeButton2.upgradeSprite = currentCard2.upgradeImageFragments[curentMaskFragment];
+        upgradeButton2.upgradeSprite = currentCard2.upgradeImageFull;
         upgradeButton2.DrawUpgradeToChoose();
 
         currentCard3 = possibleUpgrades[Random.Range(0, possibleUpgrades.Length)];
         upgradeButton3.thisUpgrade = currentCard3;
         upgradeButton3.upgradeDescription = currentCard3.upgradeDescription;
-        upgradeButton3.upgradeSprite = currentCard3.upgradeImageFragments[curentMaskFragment];
+        upgradeButton3.upgradeSprite = currentCard3.upgradeImageFull;
         upgradeButton3.DrawUpgradeToChoose();
     }
 

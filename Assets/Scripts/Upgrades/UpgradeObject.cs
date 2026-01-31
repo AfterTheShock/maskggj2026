@@ -6,7 +6,6 @@ public class UpgradeObject : ScriptableObject
     [TextArea] public string upgradeDescription;
 
     public Sprite upgradeImageFull;
-    public Sprite[] upgradeImageFragments = new Sprite[0]; 
 
 
     [Header("Mascara del arma")]
