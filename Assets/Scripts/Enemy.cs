@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour
     }
     IEnumerator HandleKnockback(Vector3 impulse, float duration)
     {
-        if (agent != null)
+        if (agent != null && agent.isActiveAndEnabled)
         {
             agent.isStopped = true;
         }
@@ -121,7 +121,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        if (agent != null)
+        if (agent != null && agent.isActiveAndEnabled)
         {
             agent.isStopped = false;
         }
