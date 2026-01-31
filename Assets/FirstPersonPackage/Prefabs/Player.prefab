@@ -77,10 +77,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633603851963424845}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -118,7 +118,7 @@ MonoBehaviour:
   airDrag: 0.4
   groundLayerMask:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 1
   playerHeight: 0.25
   isJumpEnabled: 1
   jumpForce: 12
@@ -200,6 +200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.2
+  turnOffCameraSmoothness: 0
+  cameraSmoothness: 18
   cameraTransfrom: {fileID: 8975362253147500668}
   orientationTransfrom: {fileID: 8426946447369453959}
   invertMouseXAxis: 0
@@ -259,6 +261,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
+  shoudTriggerGrabAnimation: 1
   interactableBeingLokedAt: {fileID: 0}
 --- !u!1 &4836633343963108269
 GameObject:
@@ -715,6 +718,8 @@ MonoBehaviour:
   runningAnimationName: PlayerRunning
   crouchingAnimationName: PlayerCrouching
   crouchingIdleAnimationName: PlayerCrouchingIdle
+  interactAnimationName: PlayerInteract
+  grabAnimationName: PlayerGrab
   animator: {fileID: 820557589378082206}
   shadowsAnimator: {fileID: 6798598718865486800}
   playerMovement: {fileID: 4696473440472801432}

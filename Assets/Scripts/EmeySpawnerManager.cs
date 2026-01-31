@@ -31,6 +31,9 @@ public class EmeySpawnerManager: MonoBehaviour
         isSpawning = true;
         yield return new WaitForSeconds(5f);
 
+        WaveUIManager.Instance?.ShowWave(currentWave);
+
+
         int enemiesToSpawn = Mathf.RoundToInt(baseEnemyCount * Mathf.Pow(multiplier, currentWave - 1));
 
         for (int i = 0; i < enemiesToSpawn; i++)
