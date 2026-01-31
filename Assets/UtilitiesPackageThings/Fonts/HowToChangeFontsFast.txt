@@ -1,0 +1,2 @@
+To change fonts fast go to the search bar on the hirearchy, click the small magnifying glass, 
+select "type" and write "tmp_text", select everithing with "ctrl + a" and change the font
