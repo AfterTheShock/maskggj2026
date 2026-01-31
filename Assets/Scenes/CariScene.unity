@@ -449,7 +449,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff10a77118876142adf828599c886c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: 100
+  maxHealth: 100
+  currentHealth: 0
+  isDead: 0
 --- !u!1 &747864634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1257,13 +1259,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   shootCooldown: 0.5
   knockbackStrenght: 3
   gunHolder: {fileID: 1316330980}
   shootRecoilRotation: {x: 350, y: 0, z: 0}
   shootRecoilRandomRotation: {x: 2, y: 3, z: 2}
   backToNormalLerpSpeed: 8
+  magazineAmmo: 0
+  totalAmmo: 0
+  reloadCooldown: 0
 --- !u!114 &1050627711
 MonoBehaviour:
   m_ObjectHideFlags: 0

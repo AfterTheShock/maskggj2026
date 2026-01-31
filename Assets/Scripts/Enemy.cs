@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    Transform playerTransform;
+    [SerializeField] Transform playerTransform;
 
     [Header("Configuración")]
     public float enemyHealth = 100f;
