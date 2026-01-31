@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff5bfc79881035449b40a264edfeefc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1633603851963424845, guid: 9b1831cd8c1e75c459acf8dc2a295469, type: 3}
   enemyHealth: 100
   enemyDamage: 10
   attackCooldown: 2

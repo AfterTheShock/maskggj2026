@@ -3,8 +3,7 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Referencias")]
-    [SerializeField] private Transform player;
+    Transform playerTransform;
 
     [Header("Configuración")]
     public float enemyHealth = 100f;
@@ -30,6 +29,7 @@ public class Enemy : MonoBehaviour
         agent.acceleration = enemyAcceleration;
         agent.angularSpeed = enemyAngularSpeed; // Velocidad de rotación
         agent.stoppingDistance = attackRange - 0.2f; // Se detiene antes del rango
+        playerTransform = GameObject.Find("Player").transform;
     }
 
     private void FixedUpdate()
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         // Mide la distancia entre el enemigo (transform.position) y la posición del jugador
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distance = Vector3.Distance(transform.position, playerTransform.position);
 
         if(distance <= attackRange && Time.time >= lastAttackTime + attackCooldown && !enemyIsAtacking)
         {
@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour
 
     void ChasePlayer()
     {
-        agent.SetDestination(player.position);
+        agent.SetDestination(playerTransform.position);
     }
 
     void TakeDamage(float damage)
