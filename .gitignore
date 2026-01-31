@@ -97,8 +97,14 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+<<<<<<< HEAD
 .vsconfig
 ProjectSettings/SceneTemplateSettings.json
 
 
 
+=======
+
+
+.vsconfig
+>>>>>>> 70f97a2def8ba9229925a7d07dfdf0f15cea643f

@@ -78,16 +78,21 @@ public class PlayerVisualsController : MonoBehaviour
         else if (playerMovement.currentMovementState == MovementState.walking)
         {
             //walking
-            ChangeAnimationTo(walkingAnimationName);
+            ChangeAnimationTo(runningAnimationName);
         }
         else if (playerMovement.currentMovementState == MovementState.running)
         {
             //Running
             ChangeAnimationTo(runningAnimationName);
         }
+        else if (playerMovement.currentMovementState == MovementState.sliding)
+        {
+            //Sliding
+            ChangeAnimationTo(crouchingAnimationName);
+        }
         else
         {
-            Debug.Log("No animation state, THIS SHOUD NOT HAPPEN");
+            Debug.Log("No animation state, THIS SHOULD NOT HAPPEND");
         }
     }
 
