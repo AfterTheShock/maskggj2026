@@ -13,12 +13,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float enemyDamage)
     {
-        if (currentHealth <= enemyDamage) {
+        float modifiedDamage = enemyDamage * (1 - UpgradeableStatsSingleton.Instance.damageResistance);
+
+        if (currentHealth <= modifiedDamage) {
             currentHealth = 0;
             Die();
         } else
         {
-            currentHealth = currentHealth - enemyDamage;
+            currentHealth = currentHealth - modifiedDamage;
             Debug.Log("Vida actual: " + currentHealth + "/" + maxHealth);
         }
     }
