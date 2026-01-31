@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,9 +11,12 @@ public class Enemy : MonoBehaviour
     public float enemyDamage = 10f;
     public float attackCooldown = 2.0f;
     public float attackRange = 1.5f;
-    [SerializeField] float enemySpeed = 15.0f;
 
-    private Rigidbody rb;
+    [SerializeField] float enemySpeed = 6;
+    [SerializeField] float enemyAcceleration = 25;
+    [SerializeField] float enemyAngularSpeed = 50;
+
+    private NavMeshAgent agent;
 
     [Header("Estado")]
     public bool enemyIsAtacking;
@@ -21,8 +24,12 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.linearDamping = 1.8f;
+        agent = GetComponent<NavMeshAgent>();
+
+        agent.speed = enemySpeed;
+        agent.acceleration = enemyAcceleration;
+        agent.angularSpeed = enemyAngularSpeed; // Velocidad de rotación
+        agent.stoppingDistance = attackRange - 0.2f; // Se detiene antes del rango
     }
 
     private void FixedUpdate()
@@ -55,7 +62,7 @@ public class Enemy : MonoBehaviour
     System.Collections.IEnumerator HitLogic()
     {
         //player.GetComponent<Health>().TakeDamage(enemyDamage);
-        Debug.Log("Golpe realizado");
+        Debug.Log("Golpe realizado por el enemigo");
         
         // Tiempo de espera hasta permitir que el enemigo ataque de nuevo
         yield return new WaitForSeconds(attackCooldown);
@@ -64,8 +71,6 @@ public class Enemy : MonoBehaviour
 
     void ChasePlayer()
     {
-        Vector3 towardsPlayer = (player.position - transform.position).normalized;
-        towardsPlayer.y = 0;
-        rb.AddForce(towardsPlayer * enemySpeed);
-    }
+        agent.SetDestination(player.position);
+    }    
 }
