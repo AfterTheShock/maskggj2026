@@ -98,10 +98,11 @@ public class PlayerShootingManager : MonoBehaviour
     private void Reload()
     {
         if (reloading) return;
-        if (totalAmmo <= currentMagazineAmmo) return;    // No hay municion en la recamara
+        if (totalAmmo <= 0) return;    // No hay municion en la recamara
         
         int ammoDifference = magazineAmmo - currentMagazineAmmo;
-        currentMagazineAmmo = magazineAmmo;
+        if(ammoDifference > totalAmmo) ammoDifference = totalAmmo;
+        currentMagazineAmmo += ammoDifference;
         totalAmmo -= ammoDifference;
 
         currentReloadCooldown = reloadCooldown;
