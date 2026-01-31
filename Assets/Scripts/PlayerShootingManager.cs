@@ -8,7 +8,6 @@ public class PlayerShootingManager : MonoBehaviour
 
     [SerializeField] float shootCooldown = 0.5f;
     [SerializeField] float knockbackStrenght = 15;
-    [SerializeField] float baseDamage = 25f;
     private float timeLeftToShoot;
 
     [Header("GunVisuals")]
@@ -56,50 +55,32 @@ public class PlayerShootingManager : MonoBehaviour
     private void Shoot()
     {
         if (reloading) return;
-        if (currentMagazineAmmo <= 0)
-        {
-            Debug.Log("Shoot(): sin balas en el cargador.");
-            return;
-        }
-
+        if(currentMagazineAmmo <= 0) return;
+        
         timeLeftToShoot = shootCooldown - shootCooldown * (UpgradeableStatsSingleton.Instance.fireRate - 1);
 
-        var cam = Camera.main;
-        if (cam == null)
-        {
-            Debug.LogError("Shoot(): no se encontró Camera.main");
-            return;
-        }
-
-        Transform cameraTransform = cam.transform;
-        Vector3 origin = cameraTransform.position;
-        Vector3 dir = cameraTransform.forward;
+        Transform cameraTransform = Camera.main.transform;
 
         RaycastHit hit;
-        if (Physics.Raycast(origin, dir, out hit, Mathf.Infinity, enemyLayer))
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, enemyLayer))
         {
             float knockbackToGive = knockbackStrenght * UpgradeableStatsSingleton.Instance.knockback;
-            float damageToGive = baseDamage * UpgradeableStatsSingleton.Instance.damage;
 
-            Enemy enemy = hit.collider.GetComponentInParent<Enemy>();
-            if (enemy != null)
-            {
-                enemy.TakeDamage(damageToGive);
-                enemy.ApplyKnockback(dir * knockbackToGive);
-            }
+            if (hit.rigidbody) hit.rigidbody.AddForce(cameraTransform.forward.normalized * knockbackToGive, ForceMode.Impulse);
+            
         }
 
         VisualRecoil();
-
+        
         currentMagazineAmmo--;
-
+        
         UserInterfaceUpdate();
     }
 
     private void Reload()
     {
         if (reloading) return;
-        if (magazineAmmo <= currentMagazineAmmo) return;
+        if (totalAmmo <= currentMagazineAmmo) return;    // No hay municion en la recamara
         
         int ammoDifference = magazineAmmo - currentMagazineAmmo;
         currentMagazineAmmo = magazineAmmo;

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4947451784742244095}
   - component: {fileID: 4696473440472801432}
   - component: {fileID: 1103973035990214211}
+  - component: {fileID: 2090609843974227455}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -109,8 +110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0122018e5c33e4d829c4a82f9c386f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSprintingEnabled: 1
-  walkingSpeed: 5
+  isSprintingEnabled: 0
+  walkingSpeed: 10
   runningSpeed: 9
   crouchingSpeed: 3
   orientationTransform: {fileID: 8426946447369453959}
@@ -119,15 +120,15 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 1
-  playerHeight: 0.25
+  playerHeight: 0.5
   isJumpEnabled: 1
-  jumpForce: 12
-  jumpCooldown: 0.5
-  airSpeedMultiplier: 0.4
-  isCrouchingEnabled: 1
+  jumpForce: 20
+  jumpCooldown: 0.4
+  airSpeedMultiplier: 0.6
+  isCrouchingEnabled: 0
   playerHeadDistance: 2
-  crouchYScale: 0.75
   crouchYScaleLerpSpeed: 7
+  crouchYScale: 0.75
   shoudLimitVelocityToCurrentVelocity: 1
   shoudLerpCurrentMovementSpeed: 1
   lerpSpeed: 14
@@ -154,6 +155,30 @@ ConstantForce:
   m_RelativeForce: {x: 0, y: 0, z: 0}
   m_Torque: {x: 0, y: 0, z: 0}
   m_RelativeTorque: {x: 0, y: 0, z: 0}
+--- !u!114 &2090609843974227455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1633603851963424845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75d5a3bc9d2172c439eaa3754dff64fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  shootCooldown: 0.2
+  knockbackStrenght: 15
+  gunHolder: {fileID: 0}
+  shootRecoilRotation: {x: 350, y: 0, z: 0}
+  shootRecoilRandomRotation: {x: 5, y: 5, z: 5}
+  backToNormalLerpSpeed: 15
+  magazineAmmo: 30
+  totalAmmo: 90
+  reloadCooldown: 1
 --- !u!1 &2523737648799915549
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 0.2
-  turnOffCameraSmoothness: 0
+  turnOffCameraSmoothness: 1
   cameraSmoothness: 18
   cameraTransfrom: {fileID: 8975362253147500668}
   orientationTransfrom: {fileID: 8426946447369453959}
@@ -257,10 +282,10 @@ MonoBehaviour:
   interactionDistance: 3
   raycastLayer:
     serializedVersion: 2
-    m_Bits: 385
+    m_Bits: 1
   interactableLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   shoudTriggerGrabAnimation: 1
   interactableBeingLokedAt: {fileID: 0}
 --- !u!1 &4836633343963108269
@@ -908,6 +933,18 @@ PrefabInstance:
       value: -5.310676
       objectReference: {fileID: 0}
     - target: {fileID: -7168019024356624449, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7168019024356624449, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7168019024356624449, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7168019024356624449, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 2.469
       objectReference: {fileID: 0}
@@ -1086,6 +1123,18 @@ PrefabInstance:
     - target: {fileID: 2154816722497985616, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 257.107
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452230343724832318, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452230343724832318, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452230343724832318, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452230343724832318, guid: c3def76bd94aa9f42aa2dbeadf16e40c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
