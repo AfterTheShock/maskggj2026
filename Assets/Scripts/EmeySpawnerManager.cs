@@ -68,11 +68,14 @@ public class EmeySpawnerManager: MonoBehaviour
 
         activeEnemies.Add(newEnemy);
 
-        //EnemyScript enemyScript = newEnemy.GetComponent<EnemyScript>();
-        //if (enemyScript != null)
-        //{
-        //    enemyScript.enemyHealth *= (1 + (currentWave * 0.1f));
-        //}
+        Enemy enemyScript = newEnemy.GetComponent<Enemy>();
+        
+        if (enemyScript != null)
+        {
+            enemyScript.enemyHealth *= (1 + ((currentWave-1) * 0.1f));
+            enemyScript.enemyDamage *= (1 + ((currentWave-1) * 0.1f));
+            enemyScript.enemySpeed *= (1 + ((currentWave-1) * 0.05f));
+        }
     }
 
     void OnDrawGizmosSelected()

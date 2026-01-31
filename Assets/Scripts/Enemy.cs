@@ -9,10 +9,10 @@ public class Enemy : MonoBehaviour
     [Header("Configuraci�n")]
     public float enemyHealth = 100f;
     public float enemyDamage = 10f;
-    public float attackCooldown = 2.0f;
-    public float attackRange = 1.5f;
+    public float enemySpeed = 6;
 
-    [SerializeField] float enemySpeed = 6;
+    [SerializeField] float attackCooldown = 2.0f;
+    [SerializeField] float attackRange = 1.5f;
     [SerializeField] float enemyAcceleration = 25;
     [SerializeField] float enemyAngularSpeed = 50;
 
