@@ -2,17 +2,32 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] float playerHealth = 100;
+    [SerializeField] float maxHealth = 100;
+    public float currentHealth;
+    public bool isDead = false;
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
+    }
 
     public void TakeDamage(float enemyDamage)
     {
-        if (playerHealth <= enemyDamage) {
-            playerHealth = 0;
-            Debug.Log("Moriste!");
+        if (currentHealth <= enemyDamage) {
+            currentHealth = 0;
+            Die();
         } else
         {
-            playerHealth = playerHealth - enemyDamage;
-            Debug.Log("Vida actual: " +  playerHealth + "/100");
+            currentHealth = currentHealth - enemyDamage;
+            Debug.Log("Vida actual: " + currentHealth + "/" + maxHealth);
         }
+    }
+
+    void Die()
+    {
+        isDead = true;
+        // Se frena el tiempo para evitar que el enemigo siga intentando hacer daño al jugador
+        Time.timeScale = 0f;
+        Debug.Log("Moriste!");
     }
 }
