@@ -10,11 +10,25 @@ public class Enemy : MonoBehaviour
     public float enemyHealth = 100f;
     public float enemyDamage = 10f;
     public float attackCooldown = 2.0f;
-    public float attackRange = 2.0f;
+    public float attackRange = 1.5f;
+    [SerializeField] float enemySpeed = 15.0f;
+
+    private Rigidbody rb;
 
     [Header("Estado")]
     public bool enemyIsAtacking;
     private float lastAttackTime;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.linearDamping = 1.8f;
+    }
+
+    private void FixedUpdate()
+    {
+        ChasePlayer();
+    }
 
     private void Update()
     {
@@ -46,5 +60,12 @@ public class Enemy : MonoBehaviour
         // Tiempo de espera hasta permitir que el enemigo ataque de nuevo
         yield return new WaitForSeconds(attackCooldown);
         enemyIsAtacking = false;
+    }
+
+    void ChasePlayer()
+    {
+        Vector3 towardsPlayer = (player.position - transform.position).normalized;
+        towardsPlayer.y = 0;
+        rb.AddForce(towardsPlayer * enemySpeed);
     }
 }
