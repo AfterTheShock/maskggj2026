@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class Enemy : MonoBehaviour
     [Header("Estado")]
     public bool enemyIsAtacking;
     private float lastAttackTime;
+    private Coroutine knockbackCoroutine;
+
 
     private void Start()
     {
@@ -47,10 +50,6 @@ public class Enemy : MonoBehaviour
             Attack();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(25);
-        }
     }
 
     void Attack()
@@ -79,7 +78,7 @@ public class Enemy : MonoBehaviour
         agent.SetDestination(playerTransform.position);
     }
 
-    void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         float modifiedDamage = damage * UpgradeableStatsSingleton.Instance.damage;
         if (enemyHealth > modifiedDamage)
@@ -91,6 +90,43 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+    }
+
+    public void ApplyKnockback(Vector3 impulse, float duration = 0.35f)
+    {
+        if (TryGetComponent<Rigidbody>(out var rb) && !rb.isKinematic)
+        {
+            rb.AddForce(impulse, ForceMode.Impulse);
+            return;
+        }
+
+        if (knockbackCoroutine != null) StopCoroutine(knockbackCoroutine);
+        knockbackCoroutine = StartCoroutine(HandleKnockback(impulse, duration));
+    }
+    IEnumerator HandleKnockback(Vector3 impulse, float duration)
+    {
+        if (agent != null)
+        {
+            agent.isStopped = true;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float dt = Time.deltaTime;
+            float t = 1f - (elapsed / duration);
+            Vector3 move = impulse * t * dt;
+            transform.position += move;
+            elapsed += dt;
+            yield return null;
+        }
+
+        if (agent != null)
+        {
+            agent.isStopped = false;
+        }
+
+        knockbackCoroutine = null;
     }
 
     void Die()

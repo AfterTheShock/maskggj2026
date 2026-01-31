@@ -133,7 +133,7 @@ MonoBehaviour:
   enemySpeed: 6
   enemyAcceleration: 25
   enemyAngularSpeed: 50
-  enemyIsAtacking: 1
+  enemyIsAtacking: 0
 --- !u!54 &8578645516441368766
 Rigidbody:
   m_ObjectHideFlags: 0
