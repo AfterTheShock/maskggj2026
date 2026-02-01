@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4559418797868052518}
+  - component: {fileID: 514654475860007960}
   m_Layer: 0
   m_Name: EnemyDead
   m_TagString: Untagged
@@ -31,8 +32,24 @@ Transform:
   m_Children:
   - {fileID: 8822817470558119907}
   - {fileID: 8426352770126097324}
+  - {fileID: 374559901235150819}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514654475860007960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3935735942580297646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc700dc29521fe4d93255177b230071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroyObject: 1.45
+  thingToSpawnOnDestroy: {fileID: 0}
+  thingToTurnOnOnDestroy: {fileID: 0}
 --- !u!1001 &3826704635315717339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +269,10 @@ PrefabInstance:
     - target: {fileID: 4357118449180629203, guid: 211e57b66052ee04ea34da8cbbbe6c77, type: 3}
       propertyPath: m_Name
       value: Momia_enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357118449180629203, guid: 211e57b66052ee04ea34da8cbbbe6c77, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4552666818356750430, guid: 211e57b66052ee04ea34da8cbbbe6c77, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -483,3 +504,108 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5579479666018097472, guid: 7000618fb1d71e74daf9e16847ce08ba, type: 3}
   m_PrefabInstance: {fileID: 4151791103671579372}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5357429879670725851
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4559418797868052518}
+    m_Modifications:
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3433225
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3433225
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3433225
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.934
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.0000029504295
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4357118449180629203, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      propertyPath: m_Name
+      value: Momia_enemy_Death
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: -7840867231617242486, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4357118449180629203, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3742259768764083632}
+  m_SourcePrefab: {fileID: 8686905464242370237, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+--- !u!4 &374559901235150819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3500460014136483016, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+  m_PrefabInstance: {fileID: 5357429879670725851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8516010249639953416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4357118449180629203, guid: 3387d4da9d25b3a478f5f495b4b0f6b5, type: 3}
+  m_PrefabInstance: {fileID: 5357429879670725851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3742259768764083632
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8516010249639953416}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6cc003ea0d53c948af2265930cc61fb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
