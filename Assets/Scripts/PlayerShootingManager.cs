@@ -15,7 +15,7 @@ public class PlayerShootingManager : MonoBehaviour
     [SerializeField] Vector3 shootRecoilRotation = new Vector3(350,0,0);
     [SerializeField] Vector3 shootRecoilRandomRotation = new Vector3(5,5,5);
     [SerializeField] float backToNormalLerpSpeed = 15;
-    
+
     [Header("Gun Func")]
     [SerializeField] private int magazineAmmo;
     [SerializeField] private int totalAmmo;
@@ -23,6 +23,9 @@ public class PlayerShootingManager : MonoBehaviour
     private int currentMagazineAmmo;
     private float currentReloadCooldown = 0;
     private bool reloading;
+
+    // visuals
+    private Transform cannon;
 
     private void Start()
     {
@@ -124,5 +127,10 @@ public class PlayerShootingManager : MonoBehaviour
             Random.Range(-shootRecoilRandomRotation.y, shootRecoilRandomRotation.y),
             Random.Range(-shootRecoilRandomRotation.z, shootRecoilRandomRotation.z)
             );
+    }
+
+    private void ParticleInstantiation()
+    {
+        //Instantiate()
     }
 }
