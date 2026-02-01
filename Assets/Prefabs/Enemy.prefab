@@ -137,8 +137,9 @@ MonoBehaviour:
   enemyAcceleration: 25
   enemyAngularSpeed: 360
   enemyIsAtacking: 0
+  enemyDeadEffect: {fileID: 3935735942580297646, guid: 4014073cca326bf419ef519d411f7f62, type: 3}
   objectToDrop: {fileID: 4003335280173021700, guid: 0c7e85ee1daae8547a44ad3ac13ed9f2, type: 3}
-  chanseToDropObject: 0.15
+  chanseToDropObject: 0.2
 --- !u!114 &8272589434465479478
 MonoBehaviour:
   m_ObjectHideFlags: 0

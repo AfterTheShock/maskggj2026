@@ -22,6 +22,10 @@ public class UpgradesManager : MonoBehaviour
 
     [SerializeField] GameObject masksEarnedImage;
 
+    [SerializeField] float timeToBlockMaskClickFor = 0.5f;
+    [SerializeField] CanvasGroup canvasGroup;
+    private float currentTimeToBlockMaskClick = 0.5f;
+
     #region SingletonPattern
     private static UpgradesManager _instance;
 
@@ -40,11 +44,15 @@ public class UpgradesManager : MonoBehaviour
         {
             forceUpgradeScreenButton = false;
             ShowUpgradeScreen();
-        } 
+        }
+        currentTimeToBlockMaskClick -= Time.unscaledDeltaTime;
+        if(currentTimeToBlockMaskClick <= 0) canvasGroup.interactable = true;
+        else canvasGroup.interactable = false;
     }
 
     public void ShowUpgradeScreen()
     {
+        currentTimeToBlockMaskClick = timeToBlockMaskClickFor;
         ShowCursorCursor();
         Time.timeScale = 0f;
 

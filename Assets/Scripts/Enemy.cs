@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     private Coroutine knockbackCoroutine;
 
     [Header("EnemyDrops")]
+    [SerializeField] GameObject enemyDeadEffect;
     [SerializeField] GameObject objectToDrop;
     [SerializeField] float chanseToDropObject = 0.15f;
 
@@ -92,6 +93,14 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            if (enemyDeadEffect != null)
+            {
+                GameObject deadEffect = Instantiate(enemyDeadEffect);
+                deadEffect.transform.position = this.transform.position;
+                deadEffect.transform.rotation = this.transform.rotation;
+                deadEffect.transform.localScale = this.transform.localScale;
+            }
+
             if (Random.Range(0f, 1f) <= chanseToDropObject) DropObjectOnDead();
             Die();
         }
