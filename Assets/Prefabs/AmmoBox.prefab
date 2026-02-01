@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8195755868405269641
 Transform:
   m_ObjectHideFlags: 0
@@ -167,6 +167,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3790748152730412738}
+  - component: {fileID: 7720908659730255485}
+  - component: {fileID: 8320580146706250229}
+  - component: {fileID: 8767053733506717935}
   m_Layer: 0
   m_Name: AmmoBox
   m_TagString: Untagged
@@ -191,6 +194,75 @@ Transform:
   - {fileID: 4215867881007116147}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7720908659730255485
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003335280173021700}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 2, z: 2}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8320580146706250229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003335280173021700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b79339f216f047b40922ee33721a3db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammountOfMagazinesToGet: 1.5
+--- !u!114 &8767053733506717935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4003335280173021700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12432b8c0d4e39469185d6e503b5f19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherColiderLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  destroyThisAfterEntering: 1
+  destroyThisAfterExiting: 0
+  onTrigerEnterEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8320580146706250229}
+        m_TargetAssemblyTypeName: AmmoBox, Assembly-CSharp
+        m_MethodName: GrabAmmoBox
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onTrigerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &4398746888029145240
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1874116936306284086}
   - component: {fileID: 2130358373620430327}
   - component: {fileID: 6664893370909408618}
+  - component: {fileID: 8272589434465479478}
   - component: {fileID: 8578645516441368766}
   - component: {fileID: 7639295712489982142}
   m_Layer: 8
@@ -122,7 +123,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3635137176961778678}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ff5bfc79881035449b40a264edfeefc, type: 3}
   m_Name: 
@@ -138,6 +139,36 @@ MonoBehaviour:
   enemyIsAtacking: 0
   objectToDrop: {fileID: 4003335280173021700, guid: 0c7e85ee1daae8547a44ad3ac13ed9f2, type: 3}
   chanseToDropObject: 0.15
+--- !u!114 &8272589434465479478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635137176961778678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0004c1e912d55614da77448ee0a8bdce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsToWaitBeforeTriggering: 1
+  eventToTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6664893370909408618}
+        m_TargetAssemblyTypeName: Enemy, Assembly-CSharp
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  triggerOnStartFunction: 1
+  triggerOnEnableFunction: 0
 --- !u!54 &8578645516441368766
 Rigidbody:
   m_ObjectHideFlags: 0
