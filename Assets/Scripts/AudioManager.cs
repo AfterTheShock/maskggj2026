@@ -15,17 +15,28 @@ public class AudioManager : MonoBehaviour
         }
     #endregion
 
-    [SerializeField] private AudioSource soundFxObject;
+    [SerializeField] private GameObject soundFxObject;
     
-    public void PlaySfx(AudioClip clip, Transform spawnTransform, float defaultVolume, bool randomPitch, bool randomVolume)
+    public void PlaySfx(AudioClip[] clips, Transform spawnTransform, float defaultVolume, bool randomPitch, bool randomVolume, AudioReverbPreset audioReverbPreset, float additionalLifeTime = 0f)
     {
-        AudioSource audioSource = Instantiate(soundFxObject, spawnTransform.position, Quaternion.identity);
-        audioSource.clip = clip;
+        if (clips.Length == 0) return;
+        
+        GameObject audioObj = Instantiate(soundFxObject, spawnTransform.position, Quaternion.identity);
+        AudioSource audioSource = audioObj.GetComponent<AudioSource>();
+        AudioReverbFilter audioReverbFilter = audioObj.GetComponent<AudioReverbFilter>();
+        
+        int index = Random.Range(0, clips.Length);
+        
+        audioSource.clip = clips[index];
         float clipLength = audioSource.clip.length;
         audioSource.volume = randomVolume ? Random.Range(0.95f,1.05f) : defaultVolume;
         audioSource.pitch =  randomPitch ? Random.Range(0.95f,1.05f) : 1f;
+        audioReverbFilter.reverbPreset = audioReverbPreset;
+        
+        float additional = additionalLifeTime > 0f ? additionalLifeTime : 0f;
+       
+        Destroy(audioSource.gameObject, clipLength +  0.2f+ additional); audioSource.Play();
         
         audioSource.Play();
-        Destroy(audioSource.gameObject, clipLength + 0.2f);
     } 
 }

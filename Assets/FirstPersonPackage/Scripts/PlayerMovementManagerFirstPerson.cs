@@ -76,6 +76,9 @@ public class PlayerMovementManagerFirstPerson : MonoBehaviour
 
     private FirstPersonInputSystem_Actions inputSystemActions;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] clips;
+    
     private void OnEnable()
     {
         if (inputSystemActions == null) inputSystemActions = new FirstPersonInputSystem_Actions();

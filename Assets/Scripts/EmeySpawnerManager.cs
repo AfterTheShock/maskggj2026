@@ -18,13 +18,22 @@ public class EmeySpawnerManager: MonoBehaviour
 
     [SerializeField] float timeBetweenWaves = 4;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] clips;
+
     void Update()
     {
         activeEnemies.RemoveAll(item => item == null);
 
         if (!isSpawning && activeEnemies.Count == 0)
         {
-            if (currentWave != 1) UpgradesManager.Instance.ShowUpgradeScreen();
+            if (currentWave != 1)
+            {
+                UpgradesManager.Instance.ShowUpgradeScreen();
+                
+                AudioClip[] selectedClips = {  clips[1] };
+                AudioManager.Instance.PlaySfx(selectedClips, transform, 1f, false, false, AudioReverbPreset.Psychotic);
+            }
             StartCoroutine(PrepareNextWave());
         }
     }
@@ -38,7 +47,8 @@ public class EmeySpawnerManager: MonoBehaviour
         if(currentWave != 1) yield return new WaitForSeconds(timeBetweenWaves);
 
         WaveUIManager.Instance?.ShowWave(currentWave);
-
+        AudioClip[] selectedClips = {  clips[0] };
+        AudioManager.Instance.PlaySfx(selectedClips, transform, 1f, false, false, AudioReverbPreset.Psychotic, 3f);
 
         int enemiesToSpawn = Mathf.RoundToInt(baseEnemyCount * Mathf.Pow(multiplier, currentWave - 1));
 
@@ -53,7 +63,7 @@ public class EmeySpawnerManager: MonoBehaviour
         isSpawning = false;
     }
 
-    [Header("Configuración de Radio")]
+    [Header("Configuraciï¿½n de Radio")]
     public float spawnRadius = 3f;
 
     void SpawnEnemy()
