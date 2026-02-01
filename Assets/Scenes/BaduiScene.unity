@@ -2810,7 +2810,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  fireRate: 2
+  fireRate: 1
   knockback: 0.05
   speed: 1
   jumpForce: 1
@@ -14602,6 +14602,7 @@ GameObject:
   - component: {fileID: 806031149}
   - component: {fileID: 806031148}
   - component: {fileID: 806031147}
+  - component: {fileID: 806031151}
   m_Layer: 0
   m_Name: Main Camera (1)
   m_TagString: MainCamera
@@ -14760,6 +14761,29 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!164 &806031151
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 806031145}
+  m_Enabled: 1
+  m_DryLevel: 0
+  m_Room: -1000
+  m_RoomHF: -454
+  m_DecayTime: 0.4
+  m_DecayHFRatio: 0.83
+  m_ReflectionsLevel: -1646
+  m_ReverbLevel: 53
+  m_ReverbDelay: 0.003
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 3
 --- !u!1001 &808095635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17977,7 +18001,7 @@ PrefabInstance:
       objectReference: {fileID: 1373239003}
     - target: {fileID: 2090609843974227455, guid: 9b1831cd8c1e75c459acf8dc2a295469, type: 3}
       propertyPath: clips.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2090609843974227455, guid: 9b1831cd8c1e75c459acf8dc2a295469, type: 3}
       propertyPath: reloadRotation.x
@@ -17991,6 +18015,10 @@ PrefabInstance:
       propertyPath: 'clips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 809ab5c26e33ff248988cb881d4cb941, type: 3}
+    - target: {fileID: 2090609843974227455, guid: 9b1831cd8c1e75c459acf8dc2a295469, type: 3}
+      propertyPath: 'clips.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 55582e15ca8e4374a86a61cd112557fc, type: 3}
     - target: {fileID: 2128632515101860981, guid: 9b1831cd8c1e75c459acf8dc2a295469, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 11.733906
@@ -21018,7 +21046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd2ce6a992f4554ca2e15d0b3bfeeff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundFxObject: {fileID: 4928649623157930861, guid: 21e0ce485f781a74da567485d3722268, type: 3}
+  soundFxObject: {fileID: 7696340483013201830, guid: 21e0ce485f781a74da567485d3722268, type: 3}
 --- !u!4 &1351909628
 Transform:
   m_ObjectHideFlags: 0
@@ -33041,6 +33069,8 @@ MonoBehaviour:
   currentWave: 1
   activeEnemies: []
   timeBetweenWaves: 4
+  clips:
+  - {fileID: 8300000, guid: 09547ce3cfcaac140a8adddc8df81705, type: 3}
   spawnRadius: 3
 --- !u!4 &1829084073
 Transform:

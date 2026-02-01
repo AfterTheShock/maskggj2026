@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     public bool isDead = false;
 
     [SerializeField] float healthRegenAt1Mult = 0.5f;
+    
+    [SerializeField] private AudioClip[] clips;
 
     private void Start()
     {
@@ -24,6 +26,9 @@ public class PlayerHealth : MonoBehaviour
     {
         float modifiedDamage = enemyDamage * (1 - UpgradeableStatsSingleton.Instance.damageResistance);
 
+        AudioClip[] selectedClips = { clips[0] };
+        AudioManager.Instance.PlaySfx(selectedClips, transform, 1f, true, true, AudioReverbPreset.Off);
+        
         if (currentHealth <= modifiedDamage) {
             currentHealth = 0;
             Die();
@@ -37,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
     void Die()
     {
         isDead = true;
-        // Se frena el tiempo para evitar que el enemigo siga intentando hacer daño al jugador
+        // Se frena el tiempo para evitar que el enemigo siga intentando hacer daï¿½o al jugador
         Time.timeScale = 0f;
         Debug.Log("Moriste!");
     }

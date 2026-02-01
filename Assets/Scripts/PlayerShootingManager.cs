@@ -117,8 +117,9 @@ public class PlayerShootingManager : MonoBehaviour
         currentMagazineAmmo--;
 
         UserInterfaceUpdate();
-        
-        AudioManager.Instance.PlaySfx(clips[0], gameObject.transform, 1f, true, true);
+
+        AudioClip[] selectedClips = {  clips[0], clips[1] };
+        AudioManager.Instance.PlaySfx(selectedClips, gameObject.transform, 1f, true, true, AudioReverbPreset.Off);
     }
 
     public void GetTotalAmmo(float ammountOfMagazinesToGet)
@@ -141,7 +142,9 @@ public class PlayerShootingManager : MonoBehaviour
         
         UserInterfaceUpdate();
         
-        AudioManager.Instance.PlaySfx(clips[1], gameObject.transform, 1f, true, true);
+        
+        AudioClip[] selectedClips = {  clips[2]};
+        AudioManager.Instance.PlaySfx(selectedClips, gameObject.transform, 1f, true, true, AudioReverbPreset.Off);
     }
 
     private void UserInterfaceUpdate()
