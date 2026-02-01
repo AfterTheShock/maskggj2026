@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] float maxHealth = 100;
+    public float maxHealth = 100f;
     public float currentHealth;
     public bool isDead = false;
 
