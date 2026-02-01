@@ -24,6 +24,8 @@ public class PauseMenuManager : MonoBehaviour
 
     private void ActivatePauseMenu()
     {
+        if (Time.timeScale == 0) return;
+
         isActive = true;
         pauseMenuHolder.SetActive(true);
         Time.timeScale = 0f;

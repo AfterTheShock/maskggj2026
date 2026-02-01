@@ -18,6 +18,7 @@ public class PlayerShootingManager : MonoBehaviour
     [SerializeField] Vector3 shootRecoilRandomRotation = new Vector3(5,5,5);
     [SerializeField] float backToNormalLerpSpeed = 15;
     [SerializeField] CinemachineImpulseSource shootImpulseSource;
+    [SerializeField] ParticleSystem muzzelFlash;
     
     [Header("Gun Func")]
     [SerializeField] private int magazineAmmo;
@@ -110,6 +111,8 @@ public class PlayerShootingManager : MonoBehaviour
         }
 
         VisualRecoil();
+
+        if (muzzelFlash) muzzelFlash.Play();
 
         currentMagazineAmmo--;
 
