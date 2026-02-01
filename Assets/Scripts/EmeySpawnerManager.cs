@@ -76,7 +76,7 @@ public class EmeySpawnerManager: MonoBehaviour
 
         GameObject newEnemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
 
-        newEnemy.transform.localScale = Vector3.one * Random.Range(0.95f,1.1f);
+        newEnemy.transform.localScale = Vector3.one * Random.Range(0.95f,1.25f);
 
         activeEnemies.Add(newEnemy);
 
