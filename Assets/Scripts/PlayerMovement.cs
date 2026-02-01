@@ -77,8 +77,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl))
             StartCrouch();
         if (Input.GetKeyUp(KeyCode.LeftControl))
-            StopCrouch();
-    }
+            StopCrouch(); }
 
     private void StartCrouch() {
         transform.localScale = crouchScale;
