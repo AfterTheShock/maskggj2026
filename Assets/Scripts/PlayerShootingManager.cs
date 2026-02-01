@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.Cinemachine;
+using UnityEngine;
 
 
 public class PlayerShootingManager : MonoBehaviour
@@ -12,9 +13,11 @@ public class PlayerShootingManager : MonoBehaviour
 
     [Header("GunVisuals")]
     [SerializeField] Transform gunHolder;
+    [SerializeField] Vector3 reloadRotation = new Vector3(25,0,0);
     [SerializeField] Vector3 shootRecoilRotation = new Vector3(350,0,0);
     [SerializeField] Vector3 shootRecoilRandomRotation = new Vector3(5,5,5);
     [SerializeField] float backToNormalLerpSpeed = 15;
+    [SerializeField] CinemachineImpulseSource shootImpulseSource;
     
     [Header("Gun Func")]
     [SerializeField] private int magazineAmmo;
@@ -23,6 +26,18 @@ public class PlayerShootingManager : MonoBehaviour
     private int currentMagazineAmmo;
     private float currentReloadCooldown = 0;
     private bool reloading;
+
+    #region SingletonPattern
+    private static PlayerShootingManager _instance;
+
+    public static PlayerShootingManager Instance { get { return _instance; } }
+
+
+    private void Awake()
+    {
+        _instance = this;
+    }
+    #endregion
 
     private void Start()
     {
@@ -45,11 +60,14 @@ public class PlayerShootingManager : MonoBehaviour
         
         if(timeLeftToShoot <= 0)
         {
-            if (Input.GetMouseButton(0)) Shoot();
+            if (Input.GetMouseButton(0) && Time.timeScale != 0) Shoot();
         }
 
         //gunHolder.localEulerAngles = Vector3.Lerp(gunHolder.localEulerAngles, new Vector3(359,0,0), Time.deltaTime * backToNormalLerpSpeed);
-        gunHolder.localRotation = Quaternion.Lerp(gunHolder.localRotation, Quaternion.identity, Time.deltaTime * backToNormalLerpSpeed);
+        if (currentReloadCooldown >= reloadCooldown * 0.5f)
+            gunHolder.localRotation = Quaternion.Lerp(gunHolder.localRotation, Quaternion.Euler(reloadRotation), Time.deltaTime * backToNormalLerpSpeed);
+        else
+            gunHolder.localRotation = Quaternion.Lerp(gunHolder.localRotation, Quaternion.identity, Time.deltaTime * backToNormalLerpSpeed);
     }
 
     private void Shoot()
@@ -58,6 +76,7 @@ public class PlayerShootingManager : MonoBehaviour
         if (currentMagazineAmmo <= 0)
         {
             Debug.Log("Shoot(): sin balas en el cargador.");
+            Reload();
             return;
         }
 
@@ -95,6 +114,12 @@ public class PlayerShootingManager : MonoBehaviour
         UserInterfaceUpdate();
     }
 
+    public void GetTotalAmmo(float ammountOfMagazinesToGet)
+    {
+        totalAmmo += (int)(magazineAmmo * ammountOfMagazinesToGet);
+        UserInterfaceUpdate();
+    }
+
     private void Reload()
     {
         if (reloading) return;
@@ -124,5 +149,7 @@ public class PlayerShootingManager : MonoBehaviour
             Random.Range(-shootRecoilRandomRotation.y, shootRecoilRandomRotation.y),
             Random.Range(-shootRecoilRandomRotation.z, shootRecoilRandomRotation.z)
             );
+
+        shootImpulseSource.GenerateImpulse();
     }
 }

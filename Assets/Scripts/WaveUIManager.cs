@@ -56,7 +56,7 @@ public class WaveUIManager : MonoBehaviour
         float t = 0f;
         while (t < fadeDuration)
         {
-            t += Time.unscaledDeltaTime;
+            t += Time.deltaTime;
             float lerp = Mathf.Clamp01(t / fadeDuration);
             canvasGroup.alpha = lerp;
             rt.localScale = Vector3.one * Mathf.Lerp(baseScale, popScale, Mathf.SmoothStep(0f, 1f, lerp));
@@ -70,7 +70,7 @@ public class WaveUIManager : MonoBehaviour
         float timer = 0f;
         while (timer < showDuration)
         {
-            timer += Time.unscaledDeltaTime;
+            timer += Time.deltaTime;
             yield return null;
         }
 
@@ -78,7 +78,7 @@ public class WaveUIManager : MonoBehaviour
         t = 0f;
         while (t < fadeDuration)
         {
-            t += Time.unscaledDeltaTime;
+            t += Time.deltaTime;
             float lerp = 1f - Mathf.Clamp01(t / fadeDuration);
             canvasGroup.alpha = lerp;
             rt.localScale = Vector3.one * Mathf.Lerp(baseScale, popScale, Mathf.SmoothStep(0f, 1f, lerp));
