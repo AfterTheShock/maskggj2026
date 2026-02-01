@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpgradesManager : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class UpgradesManager : MonoBehaviour
     [SerializeField] int curentMaskFragment = 0;
 
     [SerializeField] bool forceUpgradeScreenButton = false;
+
+    [SerializeField] GameObject masksEarnedImage;
 
     #region SingletonPattern
     private static UpgradesManager _instance;
@@ -89,9 +92,23 @@ public class UpgradesManager : MonoBehaviour
 
         HideUpgradeScreen();
 
+        SpawnNewUiChosenMask(chosenUpgrade);
+
         curentMaskFragment++;
 
         if (curentMaskFragment >= maxMaskFragment) curentMaskFragment = 0;
+    }
+
+    private void SpawnNewUiChosenMask(UpgradeObject chosenUpgrade)
+    {
+        if (masksEarnedImage == null) return;
+
+        GameObject newImage = Instantiate(masksEarnedImage);
+        newImage.transform.SetParent(masksEarnedImage.transform.parent);
+
+        newImage.GetComponent<Image>().sprite = chosenUpgrade.upgradeImageFull;
+
+        newImage.SetActive(true);
     }
 
     private void HideUpgradeScreen()

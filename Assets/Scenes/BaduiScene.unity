@@ -903,6 +903,7 @@ MonoBehaviour:
   maxMaskFragment: 3
   curentMaskFragment: 0
   forceUpgradeScreenButton: 0
+  masksEarnedImage: {fileID: 0}
 --- !u!4 &561305961
 Transform:
   m_ObjectHideFlags: 0
@@ -959,8 +960,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 44557e9a272838940a5ed0a5f618b923, type: 2}
+  m_sharedMaterial: {fileID: 615833010003409911, guid: 44557e9a272838940a5ed0a5f618b923, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1206,6 +1207,12 @@ MonoBehaviour:
   maskImage: {fileID: 598869864}
   upgradeDescription: 
   upgradeSprite: {fileID: 0}
+  targetScaleMultiplierBig: 1.15
+  targetScaleMultiplierEnd: 1.1
+  targetScaleMultiplierSmallOnBuy: 1.45
+  scaleLerpSpeed: 18
+  rotationOnHover: {x: 0, y: 0, z: 1}
+  rotationLerpSpeed: 10
 --- !u!1 &670813414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,8 +1272,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 30/30
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 44557e9a272838940a5ed0a5f618b923, type: 2}
+  m_sharedMaterial: {fileID: 615833010003409911, guid: 44557e9a272838940a5ed0a5f618b923, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1838,6 +1845,12 @@ MonoBehaviour:
   maskImage: {fileID: 803958595}
   upgradeDescription: 
   upgradeSprite: {fileID: 0}
+  targetScaleMultiplierBig: 1.15
+  targetScaleMultiplierEnd: 1.1
+  targetScaleMultiplierSmallOnBuy: 1.45
+  scaleLerpSpeed: 18
+  rotationOnHover: {x: 0, y: 0, z: 1}
+  rotationLerpSpeed: 10
 --- !u!1 &806031145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3309,6 +3322,12 @@ MonoBehaviour:
   maskImage: {fileID: 2005152314}
   upgradeDescription: 
   upgradeSprite: {fileID: 0}
+  targetScaleMultiplierBig: 1.15
+  targetScaleMultiplierEnd: 1.1
+  targetScaleMultiplierSmallOnBuy: 1.45
+  scaleLerpSpeed: 18
+  rotationOnHover: {x: 0, y: 0, z: 1}
+  rotationLerpSpeed: 10
 --- !u!1 &2119508144
 GameObject:
   m_ObjectHideFlags: 0

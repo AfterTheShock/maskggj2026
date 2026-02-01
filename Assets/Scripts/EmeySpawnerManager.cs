@@ -16,12 +16,15 @@ public class EmeySpawnerManager: MonoBehaviour
 
     private bool isSpawning = false;
 
+    [SerializeField] float timeBetweenWaves = 4;
+
     void Update()
     {
         activeEnemies.RemoveAll(item => item == null);
 
         if (!isSpawning && activeEnemies.Count == 0)
         {
+            if (currentWave != 1) UpgradesManager.Instance.ShowUpgradeScreen();
             StartCoroutine(PrepareNextWave());
         }
     }
@@ -29,7 +32,10 @@ public class EmeySpawnerManager: MonoBehaviour
     IEnumerator PrepareNextWave()
     {
         isSpawning = true;
-        yield return new WaitForSeconds(5f);
+
+        //if (currentWave != 1) UpgradesManager.Instance.ShowUpgradeScreen();
+
+        if(currentWave != 1) yield return new WaitForSeconds(timeBetweenWaves);
 
         WaveUIManager.Instance?.ShowWave(currentWave);
 
@@ -42,6 +48,7 @@ public class EmeySpawnerManager: MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSpawns);
         }
 
+        
         currentWave++;
         isSpawning = false;
     }
@@ -51,6 +58,7 @@ public class EmeySpawnerManager: MonoBehaviour
 
     void SpawnEnemy()
     {
+        /*
         int randomIndex = Random.Range(0, spawnPoints.Length);
         Vector3 centerPoint = spawnPoints[randomIndex].position;
 
@@ -62,9 +70,13 @@ public class EmeySpawnerManager: MonoBehaviour
         if (UnityEngine.AI.NavMesh.SamplePosition(randomPosition, out hit, spawnRadius, UnityEngine.AI.NavMesh.AllAreas))
         {
             randomPosition = hit.position;
-        }
+        }*/
+
+        Vector3 randomPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
 
         GameObject newEnemy = Instantiate(enemyPrefab, randomPosition, Quaternion.identity);
+
+        newEnemy.transform.localScale = Vector3.one * Random.Range(0.95f,1.25f);
 
         activeEnemies.Add(newEnemy);
 
@@ -72,9 +84,9 @@ public class EmeySpawnerManager: MonoBehaviour
         
         if (enemyScript != null)
         {
-            enemyScript.enemyHealth *= (1 + ((currentWave-1) * 0.1f));
-            enemyScript.enemyDamage *= (1 + ((currentWave-1) * 0.1f));
-            enemyScript.enemySpeed *= (1 + ((currentWave-1) * 0.05f));
+            enemyScript.enemyHealth *= (1 + ((currentWave-1) * 0.025f));
+            enemyScript.enemyDamage *= (1 + ((currentWave-1) * 0.15f));
+            enemyScript.enemySpeed *= (1 + ((currentWave-1) * 0.085f));
         }
     }
 

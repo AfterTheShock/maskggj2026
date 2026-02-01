@@ -6,9 +6,18 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public bool isDead = false;
 
+    [SerializeField] float healthRegenAt1Mult = 0.5f;
+
     private void Start()
     {
         currentHealth = maxHealth;
+    }
+
+    private void Update()
+    {
+        currentHealth += Time.deltaTime * UpgradeableStatsSingleton.Instance.lifeRegeneration * healthRegenAt1Mult;
+
+        if(currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
     public void TakeDamage(float enemyDamage)

@@ -23,6 +23,10 @@ public class Enemy : MonoBehaviour
     private float lastAttackTime;
     private Coroutine knockbackCoroutine;
 
+    [Header("EnemyDrops")]
+    [SerializeField] GameObject objectToDrop;
+    [SerializeField] float chanseToDropObject = 0.15f;
+
 
     private void Start()
     {
@@ -88,12 +92,23 @@ public class Enemy : MonoBehaviour
         }
         else
         {
+            if (Random.Range(0f, 1f) <= chanseToDropObject) DropObjectOnDead();
             Die();
         }
     }
 
-    public void ApplyKnockback(Vector3 impulse, float duration = 0.35f)
+    private void DropObjectOnDead()
     {
+        if (objectToDrop == null) return;
+
+        GameObject drop = Instantiate(objectToDrop);
+        drop.transform.position = this.transform.position;
+    }
+
+    public void ApplyKnockback(Vector3 impulse, float duration = 0.2f)
+    {
+        if (impulse.magnitude <= 0f) return;
+
         if (TryGetComponent<Rigidbody>(out var rb) && !rb.isKinematic)
         {
             rb.AddForce(impulse, ForceMode.Impulse);
