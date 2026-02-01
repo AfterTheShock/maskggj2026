@@ -39,6 +39,7 @@ public class Options_DataToSave : MonoBehaviour
     }
     #endregion
 
+
     public void LoadData()
     {
         Options_PlayerData data = Options_SaveSystem.LoadPlayer();
@@ -86,6 +87,8 @@ public class Options_DataToSave : MonoBehaviour
         SetVolumesWithCurrentData();
 
         InicializePlayerSettings();
+
+        //Screen.SetResolution(1280, 720,true);
     }
 
     private void InicializePlayerSettings()
