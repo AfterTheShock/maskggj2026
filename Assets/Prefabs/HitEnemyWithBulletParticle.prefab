@@ -74,7 +74,7 @@ MonoBehaviour:
   audioSourceToCopy: {fileID: 0}
   volume: 1
   audioMixerGroup: {fileID: -5905616986160798603, guid: 668aea08a4aabab468f78d7576414724, type: 2}
-  spatialBlend: 1
+  spatialBlend: 0
   playOnceOnStart: 1
 --- !u!1 &1287282120923501055
 GameObject:
