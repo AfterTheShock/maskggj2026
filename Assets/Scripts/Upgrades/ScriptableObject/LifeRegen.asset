@@ -20,7 +20,7 @@ MonoBehaviour:
   speed: 0
   jumpForce: 0
   damageResistance: 0
-  lifeRegeneration: 0.15
+  lifeRegeneration: 0.5
   enemySlowness: 0
   enemyDamageReduction: 0
   enemyHealthReduction: 0

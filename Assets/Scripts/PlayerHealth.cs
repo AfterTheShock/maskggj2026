@@ -10,6 +10,8 @@ public class PlayerHealth : MonoBehaviour
     
     [SerializeField] private AudioClip[] clips;
 
+    [SerializeField] GameObject DeadMenu;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -45,5 +47,15 @@ public class PlayerHealth : MonoBehaviour
         // Se frena el tiempo para evitar que el enemigo siga intentando hacer da�o al jugador
         Time.timeScale = 0f;
         Debug.Log("Moriste!");
+
+        ShowCursorCursor();
+
+        DeadMenu.SetActive(true);
+    }
+
+    private void ShowCursorCursor()
+    {
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
     }
 }

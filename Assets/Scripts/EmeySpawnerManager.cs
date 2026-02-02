@@ -96,7 +96,8 @@ public class EmeySpawnerManager: MonoBehaviour
         {
             enemyScript.enemyHealth *= (1 + ((currentWave-1) * 0.025f));
             enemyScript.enemyDamage *= (1 + ((currentWave-1) * 0.15f));
-            enemyScript.enemySpeed *= (1 + ((currentWave-1) * 0.085f));
+            enemyScript.enemySpeed *= (1 + ((currentWave-1) * 0.1f));
+            enemyScript.enemyAcceleration *= (1 + ((currentWave-1) * 0.1f));
         }
     }
 

@@ -19,7 +19,10 @@ public class PlayerShootingManager : MonoBehaviour
     [SerializeField] float backToNormalLerpSpeed = 15;
     [SerializeField] CinemachineImpulseSource shootImpulseSource;
     [SerializeField] ParticleSystem muzzelFlash;
-    
+    [SerializeField] GameObject muzzelFlashObject;
+    [SerializeField] Animator gunAnimator;
+    [SerializeField] string reloadAnimationName = "reload";
+
     [Header("Gun Func")]
     [SerializeField] private int magazineAmmo;
     [SerializeField] private int totalAmmo;
@@ -112,7 +115,9 @@ public class PlayerShootingManager : MonoBehaviour
 
         VisualRecoil();
 
+
         if (muzzelFlash) muzzelFlash.Play();
+        if (muzzelFlashObject) muzzelFlashObject.SetActive(true);
 
         currentMagazineAmmo--;
 
@@ -132,7 +137,9 @@ public class PlayerShootingManager : MonoBehaviour
     {
         if (reloading) return;
         if (totalAmmo <= 0) return;    // No hay municion en la recamara
-        
+
+        if (gunAnimator) gunAnimator.Play(reloadAnimationName);
+
         int ammoDifference = magazineAmmo - currentMagazineAmmo;
         if(ammoDifference > totalAmmo) ammoDifference = totalAmmo;
         currentMagazineAmmo += ammoDifference;

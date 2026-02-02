@@ -18,7 +18,7 @@ MonoBehaviour:
   fireRate: 0
   knockback: 0
   speed: 0
-  jumpForce: 0.15
+  jumpForce: 0.2
   damageResistance: 0
   lifeRegeneration: 0
   enemySlowness: 0

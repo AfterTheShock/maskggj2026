@@ -48,7 +48,7 @@ public class WaveUIManager : MonoBehaviour
         if (canvasGroup == null) canvasGroup = GetComponentInChildren<CanvasGroup>() ?? (waveText != null ? waveText.gameObject.AddComponent<CanvasGroup>() : gameObject.AddComponent<CanvasGroup>());
 
 
-        waveText.text = $"WAVE {waveNumber}";
+        waveText.text = $"OLEADA {waveNumber}";
         RectTransform rt = waveText.rectTransform;
         rt.localScale = Vector3.one * baseScale;
 

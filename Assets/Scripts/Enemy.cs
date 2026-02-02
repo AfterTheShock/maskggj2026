@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] float attackCooldown = 2.0f;
     [SerializeField] float attackRange = 1.5f;
-    [SerializeField] float enemyAcceleration = 25;
+    public float enemyAcceleration = 25;
     [SerializeField] float enemyAngularSpeed = 50;
 
     private NavMeshAgent agent;

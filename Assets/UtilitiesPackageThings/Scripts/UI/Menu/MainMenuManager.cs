@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -55,6 +56,12 @@ public class MainMenuManager : MonoBehaviour
         if (SceneManager.GetActiveScene() != null) index = SceneManager.GetActiveScene().buildIndex + 1;
 
         SceneManager.LoadScene(index);
+    }
+
+    public void RetryScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGameButton()

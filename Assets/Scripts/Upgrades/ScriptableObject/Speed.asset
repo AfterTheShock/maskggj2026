@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Speed
   m_EditorClassIdentifier: 
   upgradeDescription: Velocidad del jugador +15%
-  upgradeImageFull: {fileID: 21300000, guid: 449e51651de82814582aee4ee24b317d, type: 3}
+  upgradeImageFull: {fileID: 21300000, guid: cbdc03bab4c3c3247b98b3444b373cad, type: 3}
   damage: 0
   fireRate: 0
   knockback: 0
-  speed: 0.15
+  speed: 0.2
   jumpForce: 0
   damageResistance: 0
   lifeRegeneration: 0

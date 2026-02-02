@@ -7,13 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/UtilitiesPackageThings/Scenes/MenuScene.unity
-    guid: 22a150f19c394894e9743dbfb1c6cca8
+    guid: 8086f245d1720a542a1c42a91608acf9
   - enabled: 1
     path: Assets/Scenes/GonzaScene.unity
     guid: 5525860628c17b043b989067fbdff64d
-  - enabled: 1
-    path: Assets/Scenes/BaduiScene.unity
-    guid: 5a43e22d606f24f479ca5103894531c9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

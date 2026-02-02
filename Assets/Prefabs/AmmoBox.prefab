@@ -227,7 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b79339f216f047b40922ee33721a3db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammountOfMagazinesToGet: 1.5
+  ammountOfMagazinesToGet: 2
 --- !u!114 &8767053733506717935
 MonoBehaviour:
   m_ObjectHideFlags: 0
