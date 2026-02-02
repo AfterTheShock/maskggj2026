@@ -20,6 +20,13 @@ public class PlayRandomSoundFromList : MonoBehaviour
     [Tooltip("0 is no 3d sound, 1 is full 3d sound")]
     [SerializeField] float spatialBlend = 1;
 
+    [SerializeField] bool playOnceOnStart = false;
+
+    private void Start()
+    {
+        if (playOnceOnStart) PlayOneShotSound();
+    }
+
     public void PlayOneShotSound()
     {
         if (randomClips.Length <= 0) return;

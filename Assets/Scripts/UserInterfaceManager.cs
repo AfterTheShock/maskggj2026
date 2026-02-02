@@ -17,6 +17,8 @@ public class UserInterfaceManager : MonoBehaviour
     
     [SerializeField] private TextMeshProUGUI ammoText;
 
+    [SerializeField] GameObject hitMarker;
+
     public void UpdateAmmoText(int leftSideAmmo, int rightSideAmmo)
     {
         ammoText.text = $"{leftSideAmmo}/{rightSideAmmo}";
@@ -30,5 +32,15 @@ public class UserInterfaceManager : MonoBehaviour
     public void NormalEffect()
     {
         ammoText.color = Color.white;
+    }
+
+    public void ShowHitMarker()
+    {
+        if (hitMarker == null) return;
+
+        GameObject newHitMarker = Instantiate(hitMarker);
+
+        newHitMarker.transform.SetParent(transform.GetChild(0));
+        newHitMarker.transform.localPosition = Vector3.zero;
     }
 }

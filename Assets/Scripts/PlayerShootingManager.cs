@@ -31,6 +31,11 @@ public class PlayerShootingManager : MonoBehaviour
     private float currentReloadCooldown = 0;
     private bool reloading;
 
+    [Header("Hit particles")]
+    [SerializeField] LayerMask hitParticlesLayer;
+    [SerializeField] GameObject hitEnemyParticlePrefab;
+    [SerializeField] GameObject hitSomethingParticlePrefab;
+
     [SerializeField] private AudioClip[] clips;
     
     #region SingletonPattern
@@ -111,6 +116,13 @@ public class PlayerShootingManager : MonoBehaviour
                 enemy.TakeDamage(damageToGive);
                 if(enemy != null && enemy.enemyHealth > 0) enemy.ApplyKnockback(dir * knockbackToGive);
             }
+
+            SpawnHitSomethingParticle(hit.point, hit.normal, hit.transform, true);
+            UserInterfaceManager.Instance.ShowHitMarker();
+        }
+        else if (Physics.Raycast(origin, dir, out hit, Mathf.Infinity, hitParticlesLayer))
+        {
+            SpawnHitSomethingParticle(hit.point,hit.normal);
         }
 
         VisualRecoil();
@@ -125,6 +137,26 @@ public class PlayerShootingManager : MonoBehaviour
 
         AudioClip[] selectedClips = {  clips[0], clips[1] };
         AudioManager.Instance.PlaySfx(selectedClips, gameObject.transform, 1f, true, true, AudioReverbPreset.Off);
+    }
+
+    private void SpawnHitSomethingParticle(Vector3 position, Vector3 hitNormal, Transform hitTransform = null, bool hitWasEnemy = false)
+    {
+        GameObject hitParticle;
+
+        if (hitWasEnemy)
+        {
+            if (hitEnemyParticlePrefab == null) return;
+            hitParticle = Instantiate(hitEnemyParticlePrefab);
+            hitParticle.transform.SetParent(hitTransform);
+        }
+        else
+        {
+            if (hitSomethingParticlePrefab == null) return;
+            hitParticle = Instantiate(hitSomethingParticlePrefab);
+        }
+
+        hitParticle.transform.position = position;
+        hitParticle.transform.forward = hitNormal;
     }
 
     public void GetTotalAmmo(float ammountOfMagazinesToGet)
